@@ -48,6 +48,27 @@ func TestSingleDigits(t *testing.T) {
 	}
 }
 
+func TestTens(t *testing.T) {
+	testcases := map[int]string{
+		20: "twenty",
+		33: "thirty three",
+		19: "nineteen",
+	}
+	for number, expected := range testcases {
+		t.Logf("Now Testing %v...", number)
+
+		result, err := numtowords.Convert(number)
+		if err != nil {
+			t.Logf("Convert to number %d failed", number)
+			t.FailNow()
+		}
+		if result != expected {
+			t.Logf("Expected '%s' for number %d, but got '%s'", expected, number, result)
+			t.FailNow()
+		}
+	}
+}
+
 func TestHundreds(t *testing.T) {
 	testcases := map[int]string{
 		109: "one hundred and nine",
