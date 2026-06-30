@@ -1,5 +1,5 @@
 // Package numtotowords provides a function to convert numbers to their English word representation.
-// First version converts positive integers only from 0 to
+// Currently converts numbers between -maxNum to
 // maxNum constant
 //
 // No additional formatting options are provided
