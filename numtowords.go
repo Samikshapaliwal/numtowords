@@ -7,8 +7,8 @@ const MaxNum = 999
 
 // Convert converts a number to words
 func Convert(number int) (string, error) {
-	if number < 0 || number > MaxNum {
-		return "", fmt.Errorf("can only convert numbers between 0 and %d", MaxNum)
+	if number < -MaxNum || number > MaxNum {
+		return "", fmt.Errorf("can only convert numbers between -%d and %d", MaxNum, MaxNum)
 	}
 	if number == 0 {
 		return "zero", nil
@@ -47,6 +47,10 @@ func Convert(number int) (string, error) {
 
 	result := ""
 
+	if number < 0 {
+		result += "minus "
+		number = -1 * number //also can use .Abs from math package but that will require importing math package
+	}
 	if number > 99 {
 		hundredsindex := number / 100
 		result += units[hundredsindex] + " hundred"
