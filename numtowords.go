@@ -1,6 +1,9 @@
 package numtowords
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 // MaxNum is the maximum number that can be converted to words
 const MaxNum = 999
@@ -49,7 +52,7 @@ func Convert(number int) (string, error) {
 
 	if number < 0 {
 		result += "minus "
-		number = -1 * number //also can use .Abs from math package but that will require importing math package
+		number = int(math.Abs(float64(number))) // can use either .Abs from math package but that will require importing math package or -1*number
 	}
 	if number > 99 {
 		hundredsindex := number / 100
